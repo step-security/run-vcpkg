@@ -8,9 +8,7 @@ on:
         required: true
 
 permissions:
-  contents: write
-  packages: write
-  id-token: write
+  contents: read
 
 jobs:
   release:
@@ -18,8 +16,6 @@ jobs:
       actions: read
       id-token: write
       contents: write
-      packages: write
     uses: step-security/reusable-workflows/.github/workflows/actions_release.yaml@v1
     with:
       tag: "${{ github.event.inputs.tag }}"
-      node_auth_token: ${{ secrets.GITHUB_TOKEN }}
