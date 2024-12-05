@@ -16,6 +16,9 @@ jobs:
       actions: read
       id-token: write
       contents: write
+      packages: write
     uses: step-security/reusable-workflows/.github/workflows/actions_release.yaml@v1
     with:
       tag: "${{ github.event.inputs.tag }}"
+    env:
+      NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
