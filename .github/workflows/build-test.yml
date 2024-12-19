@@ -17,11 +17,16 @@ jobs:
         os: [ubuntu-latest, macos-latest, windows-latest]
 
     steps:
-    - uses: actions/checkout@v4
+    - name: Harden Runner
+      uses: step-security/harden-runner@0080882f6c36860b6ba35c610c98ce87d4e2f26f # v2.10.2
+      with:
+        egress-policy: audit
+
+    - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       with:
         submodules: true
-    - uses: lukka/get-cmake@latest
-    - uses: actions/setup-node@v4
+    - uses: lukka/get-cmake@5979409e62bdf841487c5fb3c053149de97a86d3 # latest
+    - uses: actions/setup-node@39370e3970a6d050c480ffad4ff0ed4d3fdee5af # v4.1.0
       with:
         node-version: '20.x'
       # How to consume GitHub packages, from this message (!): https://github.community/t/download-from-github-package-registry-without-authentication/14407/35
@@ -36,7 +41,7 @@ jobs:
     - run: npm run test
     - run: npm run build
     - name: Coveralls
-      uses: coverallsapp/github-action@v2
+      uses: coverallsapp/github-action@cfd0633edbd2411b532b808ba7a8b5e04f76d2c8 # v2.3.4
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         parallel: true
@@ -52,12 +57,17 @@ jobs:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
     steps:
+    - name: Harden Runner
+      uses: step-security/harden-runner@0080882f6c36860b6ba35c610c98ce87d4e2f26f # v2.10.2
+      with:
+        egress-policy: audit
+
     - name: checkout this action
-      uses: actions/checkout@v4
+      uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       with:
         submodules: true
 
-    - uses: lukka/get-cmake@latest
+    - uses: lukka/get-cmake@5979409e62bdf841487c5fb3c053149de97a86d3 # latest
 
     - name: basic test for run-vcpkg (not running vcpkg).
       uses: ./
@@ -92,12 +102,17 @@ jobs:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
     steps:
+    - name: Harden Runner
+      uses: step-security/harden-runner@0080882f6c36860b6ba35c610c98ce87d4e2f26f # v2.10.2
+      with:
+        egress-policy: audit
+
     - name: checkout this action
-      uses: actions/checkout@v4
+      uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       with:
         submodules: true
 
-    - uses: lukka/get-cmake@latest
+    - uses: lukka/get-cmake@5979409e62bdf841487c5fb3c053149de97a86d3 # latest
 
     - name: basic test for run-vcpkg (not running vcpkg).
       uses: ./
@@ -111,8 +126,13 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ always() }}
     steps:
+    - name: Harden Runner
+      uses: step-security/harden-runner@0080882f6c36860b6ba35c610c98ce87d4e2f26f # v2.10.2
+      with:
+        egress-policy: audit
+
     - name: Finalize Coveralls
-      uses: coverallsapp/github-action@v2
+      uses: coverallsapp/github-action@cfd0633edbd2411b532b808ba7a8b5e04f76d2c8 # v2.3.4
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         parallel-finished: true
