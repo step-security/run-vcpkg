@@ -11,6 +11,15 @@ on:
         description: "Specify a base branch"
         required: false
         default: "main"
+      use_private_packages:
+        description: "Use private packages?"
+        required: false
+        type: boolean
+
+permissions:
+  contents: write
+  pull-requests: write
+  packages: read   
 
 jobs:
   audit-fix:
@@ -18,7 +27,4 @@ jobs:
     with:
       force: ${{ inputs.force }}
       base_branch: ${{ inputs.base_branch }}
-
-permissions:
-  contents: write
-  pull-requests: write
+      use_private_packages: ${{ inputs.use_private_packages }}
