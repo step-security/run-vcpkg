@@ -24,13 +24,11 @@ permissions:
 jobs:
   audit-fix:
     runs-on: ubuntu-latest
-    steps:
-      - name: Enable Debugging
-        run: echo "ACTIONS_STEP_DEBUG=true" >> $GITHUB_ENV
-
-    uses: step-security/reusable-workflows/.github/workflows/npm_audit_fix.yml@v1
     with:
       force: ${{ inputs.force }}
       base_branch: ${{ inputs.base_branch }}
       use_private_packages: ${{ inputs.use_private_packages }}
     secrets: inherit
+    uses: step-security/reusable-workflows/.github/workflows/npm_audit_fix.yml@v1
+    env:
+      ACTIONS_STEP_DEBUG: "true"
