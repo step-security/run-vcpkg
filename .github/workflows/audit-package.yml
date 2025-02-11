@@ -23,14 +23,8 @@ permissions:
 
 jobs:
   audit-fix:
-    runs-on: ubuntu-latest
-    env:
-      ACTIONS_STEP_DEBUG: "true"  # Enable debugging
-    steps:
-      - name: Run Reusable Workflow
-        uses: step-security/reusable-workflows/.github/workflows/npm_audit_fix.yml@v1
-        with:
-          force: ${{ inputs.force }}
-          base_branch: ${{ inputs.base_branch }}
-          use_private_packages: ${{ inputs.use_private_packages }}
-        secrets: inherit
+    uses: step-security/reusable-workflows/.github/workflows/npm_audit_fix.yml@fix_npm-auidt-fix-WithAuth
+    with:
+      force: ${{ inputs.force }}
+      base_branch: ${{ inputs.base_branch }}
+      use_private_packages: ${{ inputs.use_private_packages }}
