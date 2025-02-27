@@ -16,15 +16,19 @@ on:
         required: false
         type: boolean
 
-permissions:
-  contents: write
-  pull-requests: write
-  packages: read   
+  schedule:
+    - cron: "0 0 * * 1"
 
 jobs:
   audit-fix:
-    uses: step-security/reusable-workflows/.github/workflows/npm_audit_fix.yml@v1
+    uses: step-security/reusable-workflows/.github/workflows/audit_fix.yml@v1
     with:
-      force: ${{ inputs.force }}
-      base_branch: ${{ inputs.base_branch }}
-      use_private_packages: ${{ inputs.use_private_packages }}
+      force: false
+      base_branch: main
+      use_private_packages: true
+
+permissions:
+  contents: write
+  pull-requests: write
+  packages: read
+  issues: write
