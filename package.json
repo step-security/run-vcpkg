@@ -18,7 +18,7 @@
     "repack": "npm run pre-build && npm run deployAssets && npm run lint && npm run build"
   },
   "devDependencies": {
-    "@types/node": "^20.8.9",
+    "@types/node": "^22.15.19",
     "@typescript-eslint/eslint-plugin": "^6.9.0",
     "@typescript-eslint/parser": "^6.9.1",
     "@vercel/ncc": "^0.38.1",
