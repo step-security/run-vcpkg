@@ -9,7 +9,9 @@
         // files are part of your compilation is a separate question that is answered by 
         // files and/or include/exclude
         //"rootDir": ".",
-        "outDir": "build"
+        "outDir": "build",
+        "skipLibCheck": true,
+        "types": ["node", "jest", "jsonpath"]
     },
     "exclude": [
         "node_modules",

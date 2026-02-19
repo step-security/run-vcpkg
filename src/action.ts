@@ -1,5 +1,5 @@
-import * as actionlib from '@lukka/action-lib'
-import * as baseUtilLib from '@lukka/base-util-lib'
+import * as actionlib from './utils/action-lib/src'
+import * as baseUtilLib from './utils/base-util-lib/src'
 import * as core from '@actions/core';
 import * as vcpkgAction from './vcpkg-action';
 import axios, { isAxiosError } from 'axios';

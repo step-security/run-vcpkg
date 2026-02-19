@@ -2,11 +2,11 @@ import * as process from 'process'
 import * as fs from 'fs'
 import * as os from 'os'
 import * as vcpkgaction from '../src/vcpkg-action'
-import * as actionlib from '@lukka/action-lib'
+import * as actionlib from '../src/utils/action-lib/src'
 import * as cache from '@actions/cache'
-import * as runvcpkglib from '@lukka/run-vcpkg-lib'
+import * as runvcpkglib from '../src/utils/run-vcpkg-lib/src'
 import * as path from 'path'
-import * as baseutil from '@lukka/base-util-lib'
+import * as baseutil from '../src/utils/base-util-lib/src'
 import * as vcpkgutils from '../src/vcpkg-utils'
 
 jest.setTimeout(120 * 1000);
@@ -23,7 +23,7 @@ let getVcpkgCacheDirMock: jest.SpyInstance;
 let getVcpkgDirMock: jest.SpyInstance;
 
 // Mocks entire run-vcpkg-lib module.
-jest.mock("@lukka/run-vcpkg-lib");
+jest.mock("../src/utils/run-vcpkg-lib/src");
 
 function clearInputs(): void {
     Object.keys(process.env)
