@@ -1,3 +1,5 @@
+[![StepSecurity Maintained Action](https://raw.githubusercontent.com/step-security/maintained-actions-assets/main/assets/maintained-action-banner.png)](https://docs.stepsecurity.io/actions/stepsecurity-maintained-actions)
+
 - [Important: **run-vcpkg@v11 requirements**](#important-run-vcpkgv11-requirements)
 - [Quickstart with a C++ project template](#quickstart-with-a-c-project-template)
 - [The **run-vcpkg@v11** action](#the-run-vcpkgv11-action)
