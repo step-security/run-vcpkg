@@ -15,6 +15,10 @@ on:
         description: "Use private packages?"
         required: false
         type: boolean
+      node_version:
+        description: "Specify Node.js version (e.g., '18', '20', 'lts/*')"
+        required: false
+        default: "24"
 
   schedule:
     - cron: "0 0 * * 1"
@@ -26,6 +30,7 @@ jobs:
       force: false
       base_branch: main
       use_private_packages: true
+      node_version: "${{ inputs.node_version || '24' }}"
 
 permissions:
   contents: write
