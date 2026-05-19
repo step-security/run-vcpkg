@@ -1,8 +1,8 @@
 import * as path from 'path'
 import * as fs from 'fs'
-import * as runvcpkglib from '@lukka/run-vcpkg-lib'
-import * as baselib from '@lukka/base-lib'
-import * as baseutillib from '@lukka/base-util-lib'
+import * as runvcpkglib from './utils/run-vcpkg-lib/src'
+import * as baselib from './utils/base-lib/src'
+import * as baseutillib from './utils/base-util-lib/src'
 import * as cache from '@actions/cache'
 
 export class Utils {

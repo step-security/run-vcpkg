@@ -1,9 +1,9 @@
 import * as process from 'process'
 import * as cp from 'child_process'
 import * as path from 'path'
-import { ActionLib } from '@lukka/action-lib';
-import { BaseUtilLib } from '@lukka/base-util-lib';
-import * as runvcpkglib from "@lukka/run-vcpkg-lib"
+import { ActionLib } from '../src/utils/action-lib/src';
+import { BaseUtilLib } from '../src/utils/base-util-lib/src';
+import * as runvcpkglib from "../src/utils/run-vcpkg-lib/src"
 
 jest.setTimeout(800 * 1000);
 

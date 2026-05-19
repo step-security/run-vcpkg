@@ -10,7 +10,7 @@
   "license": "MIT",
   "scripts": {
     "clean": "rm -rf ./build",
-    "deployAssets": "cp ./node_modules/@lukka/assets-lib/src/matchers/*.json ./dist/",
+    "deployAssets": "cp ./src/utils/assets-lib/src/matchers/*.json ./dist/",
     "pre-build": "npm run deployAssets && npx tsc",
     "lint": "npx eslint .",
     "test": "npx jest",
@@ -18,6 +18,7 @@
     "repack": "npm run pre-build && npm run deployAssets && npm run lint && npm run build"
   },
   "devDependencies": {
+    "@types/jsonpath": "^0.2.4",
     "@types/node": "^20.8.9",
     "@typescript-eslint/eslint-plugin": "^6.9.0",
     "@typescript-eslint/parser": "^6.9.1",
@@ -40,20 +41,19 @@
     "@actions/github": "6.0.0",
     "@actions/glob": "^0.4.0",
     "@actions/io": "^1.1.3",
-    "@lukka/action-lib": "^4.1.2",
-    "@lukka/assets-lib": "^4.1.2",
-    "@lukka/base-lib": "^4.1.2",
-    "@lukka/base-util-lib": "^4.1.2",
-    "@lukka/run-vcpkg-lib": "^4.1.2",
     "@types/adm-zip": "^0.4.32",
     "@types/follow-redirects": "^1.14.1",
     "@types/jest": "29.5.6",
     "adm-zip": "0.5.10",
-    "axios": "^1.16.0",
+    "axios": "^1.7.8",
+    "del": "^5.1.0",
+    "fast-glob": "^3.3.3",
     "follow-redirects": "^1.15.6",
     "ini": ">=1.3.6",
     "jest-cli": "29.7.0",
+    "jsonpath": "^1.2.1",
     "node-notifier": ">=8.0.1",
-    "strip-json-comments": "^3.0.1"
+    "strip-json-comments": "^3.0.1",
+    "using-statement": "^0.4.2"
   }
 }
