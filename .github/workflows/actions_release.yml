@@ -21,7 +21,7 @@ jobs:
       id-token: write
       contents: write
       packages: read
-    uses: step-security/reusable-workflows/.github/workflows/actions_release_auth.yaml@v1
+    uses: step-security/reusable-workflows/.github/workflows/actions_release.yaml@v1
     with:
       tag: "${{ github.event.inputs.tag }}"
       node_version: "${{ github.event.inputs.node_version }}"
