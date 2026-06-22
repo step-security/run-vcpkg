@@ -1,0 +1,33 @@
+name: Auto Cherry-Pick from Upstream
+
+on:
+  workflow_dispatch:
+    inputs:
+      base_branch:
+        description: "Base branch to create the PR against"
+        required: true
+        default: "main"
+      script:
+        description: 'Script to run after audit fix'
+        required: false
+        default: 'npm run repack'
+      use_private_packages:
+        description: "Use private packages?"
+        required: false
+        type: boolean
+
+permissions:
+  contents: write
+  pull-requests: write
+  packages: read
+  issues: write
+
+jobs:
+  cherry-pick:
+    uses: step-security/reusable-workflows/.github/workflows/auto_cherry_pick.yaml@v1
+    with:
+      original-owner: "lukka"
+      repo-name: "run-vcpkg"
+      base_branch: ${{ inputs.base_branch }}
+      script: ${{ inputs.script || 'npm run all' }}
+      use_private_packages: ${{ inputs.use_private_packages || true }}
