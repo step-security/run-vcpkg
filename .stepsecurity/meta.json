@@ -1,0 +1,18 @@
+{
+   "schema_version": "1",
+   "onboarding_type": "copied",
+   "archived": false,
+   "maintained_action_name": "step-security/run-vcpkg",
+   "upstream_full_repo_name": "lukka/run-vcpkg",
+   "action_type": "node",
+   "last_release": {
+     "tag_name": "v11.5.3",
+     "created_at": "2026-05-20T07:01:44Z",
+     "published_at": "2026-05-23T15:23:39Z"
+   },
+   "sync": {
+     "ignore_presets": [
+       "defaults_v1"
+     ]
+   }
+ }
