@@ -3,8 +3,6 @@ name: 'build-test'
 on:
   push:
   pull_request:
-  schedule:
-    - cron: '0 1 * * *'
   workflow_dispatch:
 
 jobs:
@@ -40,15 +38,6 @@ jobs:
     - run: npm run lint
     - run: npm run test
     - run: npm run build
-    - name: Coveralls
-      uses: coverallsapp/github-action@cfd0633edbd2411b532b808ba7a8b5e04f76d2c8 # v2.3.4
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        parallel: true
-        flag-name: ${{ matrix.os }}-build_and_unit_test
-        base-path: ${{ runner.os != 'macOS' && '__tests__/theAssets/vcpkg_project/' || '' }}
-        debug: true
-
   tests:
     name: '${{ matrix.os }}: functional tests'
     runs-on: ${{ matrix.os }}
@@ -67,7 +56,7 @@ jobs:
       with:
         submodules: true
 
-    - uses: lukka/get-cmake@5979409e62bdf841487c5fb3c053149de97a86d3 # latest
+    - uses: step-security/get-cmake@f6b835c9463ee98e87dfe37279425296afdad70f # v4.3.3
 
     - name: basic test for run-vcpkg (not running vcpkg).
       uses: ./
@@ -120,21 +109,3 @@ jobs:
         vcpkgDirectory: ${{ github.workspace }}/vcpkg
         vcpkgGitCommitId: 'b322364f06308bdd24823f9d8f03fe0cc86fd46f'
         vcpkgGitUrl: 'https://github.com/microsoft/vcpkg.git'
-
-  finalize_coveralls:
-    needs: build_and_unit_test
-    runs-on: ubuntu-latest
-    if: ${{ always() }}
-    steps:
-    - name: Harden Runner
-      uses: step-security/harden-runner@0080882f6c36860b6ba35c610c98ce87d4e2f26f # v2.10.2
-      with:
-        egress-policy: audit
-
-    - name: Finalize Coveralls
-      uses: coverallsapp/github-action@cfd0633edbd2411b532b808ba7a8b5e04f76d2c8 # v2.3.4
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        parallel-finished: true
-        carryforward: "macos-latest-build_and_unit_test,ubuntu-latest-build_and_unit_test,windows-latest-build_and_unit_test"
-        debug: true

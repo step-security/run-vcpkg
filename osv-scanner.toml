@@ -17,3 +17,23 @@ reason = "undici: WebSocket client exception; action does not use WebSockets"
 [[IgnoredVulns]]
 id = "GHSA-4992-7rv2-5pvq"
 reason = "undici: CRLF injection via upgrade option; not used by @actions/github or @actions/http-client"
+
+[[IgnoredVulns]]
+id = "GHSA-35p6-xmwp-9g52"
+reason = "undici: HTTP response queue poisoning via keep-alive socket reuse; action only connects to trusted GitHub API, not untrusted servers"
+
+[[IgnoredVulns]]
+id = "GHSA-g8m3-5g58-fq7m"
+reason = "undici: Set-Cookie SameSite attribute downgrade; action does not handle browser cookies or user sessions"
+
+[[IgnoredVulns]]
+id = "GHSA-p88m-4jfj-68fv"
+reason = "undici: HTTP header injection via Set-Cookie percent-decoding; action has no user-controlled input in HTTP headers"
+
+[[IgnoredVulns]]
+id = "GHSA-vxpw-j846-p89q"
+reason = "undici: WebSocket DoS via fragment count bypass; action does not use WebSockets"
+
+[[IgnoredVulns]]
+id = "GHSA-w5hq-g745-h8pq"
+reason = "uuid: buffer bounds check only affects v3/v5/v6 with buf argument; node-notifier uses uuid.v4() without buf and is a test-only devDependency not included in the production bundle"
