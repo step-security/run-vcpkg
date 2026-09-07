@@ -5,6 +5,9 @@ on:
   pull_request:
   workflow_dispatch:
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true" # Force JavaScript-based GitHub Actions in this workflow to run on Node.js 24 for consistent runtime behavior.
+
 jobs:
   build_and_unit_test:
     name: '${{ matrix.os }}: build and unit tests'
@@ -62,14 +65,14 @@ jobs:
       uses: ./
       with:
         vcpkgDirectory: ${{ github.workspace }}/vcpkg
-        vcpkgGitCommitId: '45f9f39362a4c52e2b1fbe57b7e649db7f3d96d4'
+        vcpkgGitCommitId: 'b322364f06308bdd24823f9d8f03fe0cc86fd46f'
         vcpkgGitUrl: 'https://github.com/microsoft/vcpkg.git'
 
     - name: basic test for run-vcpkg with running 'vcpkg install'.
       uses: ./
       with:
         vcpkgDirectory: ${{ github.workspace }}/vcpkg
-        vcpkgGitCommitId: '45f9f39362a4c52e2b1fbe57b7e649db7f3d96d4'
+        vcpkgGitCommitId: 'b322364f06308bdd24823f9d8f03fe0cc86fd46f'
         runVcpkgInstall: true
         vcpkgGitUrl: 'https://github.com/microsoft/vcpkg.git'
       env:
@@ -107,5 +110,5 @@ jobs:
       uses: ./
       with:
         vcpkgDirectory: ${{ github.workspace }}/vcpkg
-        vcpkgGitCommitId: '45f9f39362a4c52e2b1fbe57b7e649db7f3d96d4'
+        vcpkgGitCommitId: 'b322364f06308bdd24823f9d8f03fe0cc86fd46f'
         vcpkgGitUrl: 'https://github.com/microsoft/vcpkg.git'
